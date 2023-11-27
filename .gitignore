@@ -1,0 +1,9 @@
+/CleanMovie.API/obj*
+/CleanMovie.API/bin*
+/CleanMovie.Application/obj*
+/CleanMovie.Application/bin*
+/CleanMovie.Domain/obj*
+/CleanMovie.Domain/bin*
+/CleanMovie.Infrastructure/obj*
+/CleanMovie.Infrastructure/bin*
+.idea
