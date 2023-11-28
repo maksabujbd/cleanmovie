@@ -24,9 +24,16 @@ public class MoviesController : ControllerBase
     // }
 
     [HttpGet]
-    public ActionResult<List<Movie>> GetAllMovies()
+    public ActionResult<List<Movie>> Get()
     {
         var movies = _movieService.GetAllMovies();
-        return movies;
+        return Ok(movies);
+    }
+
+    [HttpPost]
+    public ActionResult<Movie> CreateMovie(Movie movie)
+    {
+        var result = _movieService.CreateMovie(movie);
+        return Ok(result);
     }
 }
