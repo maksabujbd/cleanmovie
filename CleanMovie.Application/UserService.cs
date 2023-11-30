@@ -27,4 +27,10 @@ public class UserService:IUserService
         var users = _userRepository.GetAllUsers();
         return users;
     }
+
+    public Users GetUserById(int id)
+    {
+        var user = _userRepository.GetUserById(id);
+        return user;
+    }
 }

@@ -1,6 +1,8 @@
+using System.Reflection;
 using System.Text;
 using CleanMovie.Application;
 using CleanMovie.Infrastructure;
+using MediatR;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -57,6 +59,9 @@ builder.Services.AddScoped<IMovieService, MovieService>();
 builder.Services.AddScoped<IMovieRepository, MovieRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+
+builder.Services.AddMediatR(Assembly.Load("CleanMovie.Application"));
+builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
 
 //Adding JWT to Dependency Container
 builder.Services.AddAuthentication(x =>

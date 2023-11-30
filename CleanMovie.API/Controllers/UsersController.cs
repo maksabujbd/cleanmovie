@@ -1,5 +1,8 @@
 ﻿using CleanMovie.Application;
+using CleanMovie.Application.Queries.MovieQueries;
+using CleanMovie.Application.Queries.UserQueries;
 using CleanMovie.Domain;
+using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,18 +14,30 @@ namespace CleanMovie.API.Controllers;
 public class UsersController : ControllerBase
 {
     private readonly IUserService _userService;
+    private readonly IMediator _mediator;
 
-    public UsersController(IUserService userService)
+    public UsersController(IUserService userService, IMediator mediator)
     {
         _userService = userService;
+        _mediator = mediator;
     }
     
-    
+    [AllowAnonymous]
     [HttpGet]
     public IActionResult Get()
     {
-        var users = _userService.GetAllUsers();
-        return Ok(users);
+        var cmd = new GetUserListQuery();
+        var result = _mediator.Send(cmd);
+        return Ok(result);
+    }
+
+    [AllowAnonymous]
+    [HttpGet("{id:int}")]
+    public IActionResult Get(int id)
+    {
+        var cmd = new GetUserByIdQuery { Id = id };
+        var result = _mediator.Send(cmd);
+        return Ok(result);
     }
 
     [HttpPost]

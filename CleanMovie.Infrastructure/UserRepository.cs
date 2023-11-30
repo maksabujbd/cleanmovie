@@ -48,4 +48,10 @@ public class UserRepository(MovieDbContext movieDbContext, IConfiguration config
         var users = movieDbContext.Users.ToList();
         return users;
     }
+
+    public Users GetUserById(int id)
+    {
+        var user = movieDbContext.Users.Find(id);
+        return user!;
+    }
 }

@@ -10,4 +10,12 @@
       <ProjectReference Include="..\CleanMovie.Domain\CleanMovie.Domain.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Commands\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="MediatR" Version="11.1.0" />
+    </ItemGroup>
+
 </Project>
